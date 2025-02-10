@@ -1,0 +1,23 @@
+/* Custom Styles */
+.hero-section {
+  background-color: #f8f9fa;
+  padding: 100px 0;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.hero-section p {
+  font-size: 1.25rem;
+  color: #666;
+}
+
+section {
+  padding: 60px 0;
+}
+
+footer {
+  background-color: #343a40;
+}
