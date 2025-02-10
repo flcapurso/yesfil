@@ -3,77 +3,83 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wedding Website</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom CSS -->
+  <title>YeşFil</title>
+  <!-- Pico CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <!-- Custom Styles -->
   <link rel="stylesheet" href="styles.css">
 </head>
-<body><!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container">
-    <a class="navbar-brand" href="#">Wedding Website</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#about">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#work">Work</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#contact">Contact</a>
-        </li>
-      </ul>
-    </div>
+<body>
+  <!-- Loading Spinner -->
+  <div id="loading-spinner" class="loading-overlay hidden">
+    <img src="images/password_accepted.gif">
+    <!-- <div class="spinner"></div> -->
+    <progress />
   </div>
-</nav>
 
-<!-- Hero Section -->
-<section class="hero-section bg-light py-5">
-  <div class="container text-center">
-    <h1 class="display-4">ipsum amet et faucibus</h1>
-    <p class="lead">Pellentesque et veneratis dolor imperdiet magna feugiat lorem dolor matits lorem sagittis.</p>
-  </div>
-</section>
+  <!-- Key Input Section -->
+  <main class="container-fluid">
+    <section id="key-input-section">
+      <img id="home" src="images/password.gif">
+      <form>
+        <input type="text" id="key-input" placeholder="Super Secret Code">
+        <button type="button" id="submit-key">Submit</button>
+        <p id="error-message" class="error-message hidden"></p>
+      </form>
+    </section>
 
-<!-- About Section -->
-<section id="about" class="py-5">
-  <div class="container">
-    <h2>About</h2>
-    <p>Add your about content here.</p>
-  </div>
-</section>
+    <!-- Main Content -->
+    <section id="main-container" class="hidden">
+      <div class="grid">
+        <button data-target="rsvp" class="secondary">RSVP</button>
+        <button data-target="weddingDay" class="secondary">The Wedding</button>
+        <button data-target="info" class="secondary">Additional Info</button>
+      </div>
+      <section id="content-frame" class="container">
+        <article id="rsvp" class="content-section active">
+          <h3>RSVP</h3>
+          <div id="user-list"class="grid"></div>
+          <form id="rsvp-form">
+            <input type="hidden" id="recordId" name="recordId">
 
-<!-- Work Section -->
-<section id="work" class="py-5 bg-light">
-  <div class="container">
-    <h2>Work</h2>
-    <p>Add your work content here.</p>
-  </div>
-</section>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
 
-<!-- Contact Section -->
-<section id="contact" class="py-5">
-  <div class="container">
-    <h2>Contact</h2>
-    <p>Add your contact content here.</p>
-  </div>
-</section>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
 
-<!-- Footer -->
-<footer class="bg-dark text-white text-center py-3">
-  <div class="container">
-    <p class="mb-0">&copy; 2023 Wedding Website. All rights reserved.</p>
-  </div>
-</footer>
+            <label for="attending">Will you be attending?</label>
+            <select id="attending" name="attending" value="" required>
+              <option hidden disabled selected value></option>
+              <option value="Yep">Yep</option>
+              <option value="Maybe">Maybe</option>
+              <option value="Nope">Nope</option>
+            </select>
 
-  <!-- Bootstrap JS (optional, for interactive components) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Custom JS -->
+            <label for="message">Message (optional)</label>
+            <textarea id="message" name="message"></textarea>
+
+            <button type="submit" class="primary">Submit</button>
+          </form>
+          <h2>Guests Attending</h2>
+          <table id="guest-list">
+          </table>
+        </article>
+
+
+        <article id="weddingDay" class="content-section">
+          <h3>The Wedding</h3>
+          <p>Info for the day...</p>
+        </article>
+
+        <article id="info" class="content-section">
+          <h3>Additional Info</h3>
+          <p>Accomodation, transport, things to do...</p>
+        </article>
+      </section>
+    </section>
+  </main>
+
   <script src="script.js"></script>
 </body>
 </html>
