@@ -49,7 +49,7 @@ body {
     var(--yellow)
   );
   background-size: 1000% 1000%;
-/*  animation: gradientShift 60s ease-in-out infinite;*/
+  animation: gradientShift 60s ease-in-out infinite;
   min-height: 100vh;
 }
 
