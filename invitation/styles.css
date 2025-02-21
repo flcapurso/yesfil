@@ -35,6 +35,12 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+@font-face {
+  font-family: "Poiret One";
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/PoiretOne-Regular.ttf') format('truetype');
+}
 body {
 	height: 100%;
 	width: 100%;
@@ -43,31 +49,41 @@ body {
 main {
 	position: absolute;
 	height: 100%;
-    background: linear-gradient(135deg, #ffeec9, #b59c62);
+    background: linear-gradient(135deg, white,white);
+  overflow: hidden;
+  padding: 0% !important;
+  /* padding-left: 10% !important;
+  padding-right: 10% !important; */
 }
 
 h1, h2, h3, h4, p {
   color: black;
-  text-shadow: 1px 1px #fff7cb, -1px -1px #d4b714;
+/*  text-shadow: 1px 1px #fff7cb, -1px -1px #d4b714; 
+  text-shadow: 1px 1px #fff7cb;
 /*  font-family: "Papyrus", "Courier New", monospace;*/
-}
-
-h1{
-  font-size: 3em;
-  padding-top: 30px;
-  font-family: "Megrim", serif;
+  font-family: "Poiret One", serif;
   font-weight: 400;
   font-style: normal;
+  padding:0px;
+  margin-bottom:5px;
 }
 
+h2{
+  /*  font-size: 2.5em;
+  padding-top: 20px;*/
+  font-size: 1.5em;
+}
+p {
+  font-size: 0.7em
+}
 
 #euc1 {
     position: absolute;
     bottom: 0;
     right: 0;
     z-index: 10;
-    transform: translate(10%, 25%) rotate(326deg);
-    filter: drop-shadow(1px 30px 10px #474747);
+    transform: translate(10%, 25%) rotate(20deg);
+    /*filter: drop-shadow(1px 30px 10px #474747);*/
     width: 30%;
 }
 #euc2 {
@@ -76,41 +92,43 @@ h1{
     left: 0;
     transform: translate(-10%, -25%) rotate(330deg);
     z-index: 10;
-    filter: drop-shadow(25px 30px 10px grey);
+    /*filter: drop-shadow(25px 30px 10px grey);*/
     width: 50%;
 }
 
 #paper {
+  display: flex;
+  align-items: center;
 	height: 100%;
 	padding: 0px;
 	position: relative;
 	text-align: center;
-	background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.2)), url('paper_bg.avif');
+	background-image: linear-gradient(135deg, rgba(255, 245, 168, 0.2), rgba(255, 245, 168, 0.2)), url('paper_bg.avif');
 	background-size: cover;
   	border-radius: 3px;
     border-bottom: 2px solid black;
     border-right: 2px solid black;
     border-left: 2px solid white;
     border-top: 2px solid white;
-    box-shadow: 50px 50px 50px #474747;
+    box-shadow: 15px 15px 15px #474747;
 }
 
-#invitation_content {
+#invitation_content_old {
 	position: absolute;
 	top: 0;
 	margin: 5%;
-    text-align: center;
-    box-shadow: 1px 1px grey, 1px 1px white inset;
-    border-radius: 30px;
+  text-align: center;
+    /*box-shadow: 1px 1px grey, 1px 1px white inset;
+    border-radius: 30px;*/
 	width: -moz-available;          /* WebKit-based browsers will ignore this. */
-    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
-    width: fill-available;
+  width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+  width: fill-available;
 	height: -moz-available;          /* WebKit-based browsers will ignore this. */
     height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
     height: fill-available;
 
 }
-
+/*
 #invitation_content::before {
   content: "";
   position: absolute;
@@ -125,5 +143,6 @@ h1{
   -webkit-mask-composite: destination-out;
   mask-composite: exclude;
 }
+*/
 
 
