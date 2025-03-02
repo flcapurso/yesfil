@@ -29,14 +29,14 @@
     </section>
 
     <!-- Main Content -->
-    <section id="main-container" class="hidden">
+    <div id="main-container" class="hidden">
       <div class="grid">
         <button data-target="rsvp" class="secondary">RSVP</button>
         <button data-target="weddingDay" class="secondary">The Wedding</button>
         <button data-target="info" class="secondary">Additional Info</button>
       </div>
-      <section id="content-frame" class="container">
-        <article id="rsvp" class="content-section active">
+      <div id="content-frame">
+        <section id="rsvp" class="content-section active">
           <h3>RSVP</h3>
           <div id="user-list"class="grid"></div>
           <form id="rsvp-form">
@@ -64,10 +64,10 @@
           <h2>Guests Attending</h2>
           <table id="guest-list">
           </table>
-        </article>
+        </section>
 
 
-        <article id="weddingDay" class="content-section">
+        <section id="weddingDay" class="content-section">
           <h3>The Wedding</h3>
           <h4>Date: 9th August 2025</h4>
           <h4>
@@ -106,9 +106,9 @@
           <p>
             We will be organising transport at regular intervals that will take you to your accommodation (probably every 45 min from 22:00)
           </p>
-        </article>
+        </section>
 
-        <article id="info" class="content-section">
+        <section id="info" class="content-section">
           <h3>Getting to Verona</h3>
           <p>Here is the list of the Airports in order of distance</p>
           <ul>
@@ -123,9 +123,9 @@
           <p>We suggest to rent a car directly from the airport as public transport is very lacking outside the city center. A good website to compare deals is rentalcars.com and they have their own full coverage insurance with is normally less than the one offered by the companies. if you need a hand planning the logistics, let us know and we can help out :)</p>
           <h3>Accommodation</h3>
           <p>We suggest to stay close to Negrar, but if you are happy to drive ~30 minutes, then Verona is doable. There is a lot of B&Bs and rooms around (most of them on Airbnb or Booking), just double check their drive distance from the venue on Maps as there are a lot of hills, so it might be further than it looks. If you do not want to spend much, we have a deal with Hotel Konaqui in San Vito, 80 euro/night for a double room and 108 euro/night for a triple room, and Hotel Diamante in Negrar, 100 euro/night for a double room.</p>
-        </article>
-      </section>
-    </section>
+        </section>
+      </div>
+    </div>
   </main>
 
   <script src="script.js"></script>

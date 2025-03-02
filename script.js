@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   var records = []
 
+  var skip = true
+
   // Fetch Access Codes from Airtable
   async function fetchAccessCodes(accessCode) {
     try {
@@ -119,6 +121,10 @@ document.addEventListener('DOMContentLoaded', () => {
     errorMessage.classList.add("hidden");
     
     try {
+      if (skip) {
+        keyInputSection.classList.add("hidden");
+        mainContainer.classList.remove("hidden");
+      }
       const isValidKey = await fetchAccessCodes(key);
       if (isValidKey) {
         keyInputSection.classList.add("hidden");
@@ -143,10 +149,18 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('button[data-target]').forEach(button => {
     button.addEventListener('click', () => {
       const target = button.dataset.target;
-      document.querySelectorAll('.content-section').forEach(section => {
-        section.classList.remove('active');
+      document.querySelectorAll('.content-section.active').forEach(section => {
+        if (section != document.getElementById(target)) {
+          section.classList.remove('active');
+          setTimeout(() => {
+            section.style.display = "none"
+          }, 500);
+        }
       });
-      document.getElementById(target).classList.add('active');
+      document.getElementById(target).style.display = "block";
+      setTimeout(() => {
+        document.getElementById(target).classList.add('active')
+      }, 300);
     });
   });
 
