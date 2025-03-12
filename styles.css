@@ -13,6 +13,7 @@ h1, h2, h3, h4, p, label, input, button, li {
   font-family: "Megrim", sans-serif;
   font-weight: 400;
   font-style: normal;
+  color: #db5236;
 }
 
 /* styles.css */
@@ -54,7 +55,7 @@ h1, h2, h3, h4, p, label, input, button, li {
 
 html {
   background: orange;
-  background-image: url('images/orange_water_1.jpg');
+  background-image: url('images/orange_water_2.webp');
   background-size: cover;
   background-attachment: fixed;
 }
@@ -160,12 +161,27 @@ form {
 /* Custom Form Styles */
 section {
 /*  display: table;*/
-  background: var(--ivory);
+  background: #f7dfc7;
   padding: 2rem;
-  border-radius: 1rem;
+  /* border-radius: 1rem; */
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
   /*max-width: 500px;
   margin: 2rem auto;*/
+}
+
+main {
+  padding:15% !important;
+}
+
+button {
+  background: #D4A373 !important;
+  border: none;
+  color: white;
+}
+
+input, select, textarea {
+  border: 1px solid #D4A373;
+  background: #f7dfc7;
 }
 
 .error-message {
