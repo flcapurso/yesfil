@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="pico.min.css">
   <!-- Custom Styles -->
   <link rel="stylesheet" href="styles.css">
+  <script src="jquery-3.7.1.js"></script>
 </head>
 <body>
   <!-- Loading Spinner -->
@@ -45,9 +46,6 @@
             <label for="name">Name</label>
             <input type="text" id="name" name="name" required>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-
             <label for="attending">Will you be attending?</label>
             <select id="attending" name="attending" value="" required>
               <option hidden disabled selected value></option>
@@ -56,14 +54,43 @@
               <option value="Nope">Nope</option>
             </select>
 
-            <label for="message">Message (optional)</label>
-            <textarea id="message" name="message"></textarea>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="allergies">Allergies</label>
+            <textarea id="allergies" name="allergies" required></textarea>
+
+            <div id="labelcheckbox" >
+              <label for="shared">Looking to share accommodation or transport (your details will be visible to others)</label>
+              <input type="checkbox" id="shared" name="shared">
+            </div>
+
+            <div id="sharedfields">
+              <label for="whatsapp">WhatsApp / Phone</label>
+              <input type="tel" id="whatsapp" name="whatsapp" required>
+
+              <label for="stayinfo">Stay duration / dates</label>
+              <textarea id="stayinfo" name="stayinfo"></textarea>
+            </div>
+
+            <details id="optionalaccordion">
+              <summary>Optional</summary>
+            </details>
+              <div id="optionalbox">
+                <label for="songs">Song requests for Party (max 2)</label>
+                <textarea id="songs" name="songs" required></textarea>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message"></textarea>
+              </div>
 
             <button type="submit" class="primary">Submit</button>
           </form>
           <h2>Guests Attending</h2>
-          <table id="guest-list">
-          </table>
+          <div id="tablebox">
+            <table id="guest-list">
+            </table>
+          </div>
         </section>
 
 

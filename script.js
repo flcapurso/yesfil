@@ -12,7 +12,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   var records = []
 
-  var skip = true
+  var skip = false
+
+
+  $( "#shared" ).on( "click", function() {
+    $( "#sharedfields" ).toggle( 200 );
+  });
+
+  $( "#optionalbox" ).hide();
+  $( "#optionalaccordion" ).on( "click", function() {
+    $( "#optionalbox" ).toggle( 200 );
+  });
 
   // Fetch Access Codes from Airtable
   async function fetchAccessCodes(accessCode) {
@@ -45,10 +55,22 @@ document.addEventListener('DOMContentLoaded', () => {
       form.elements["name"].value = data.fields.Name || ""
       form.elements["attending"].value = data.fields.Attending || ""
       form.elements["email"].value = data.fields.Email || ""
+      form.elements["allergies"].value = data.fields.Allergies || ""
+      form.elements["shared"].checked = data.fields.Shared || false
+      form.elements["whatsapp"].value = data.fields.WhatsApp || ""
+      form.elements["stayinfo"].value = data.fields.StayInfo || ""
+      form.elements["songs"].value = data.fields.Songs || ""
+      form.elements["message"].value = data.fields.Message || ""
 
       // for (const [key, value] of Object.entries(data.fields)) {
       //   console.log(key, value);
       // }
+      console.log
+      if (data.fields.Shared) {
+        $( "#sharedfields" ).show();
+      } else {
+        $( "#sharedfields" ).hide();
+      }
 
 
     } catch (error) {
@@ -64,14 +86,18 @@ document.addEventListener('DOMContentLoaded', () => {
       const button = document.createElement('button');
       button.textContent = record.fields.Name || 'Guest'; // Use "Guest" if name is missing
       button.value = record.id
-      button.addEventListener('click', () => {
-        console.log('Selected guest:', button.value);
-        populateForm(button.value)
-      });
+      button.id = record.id
       buttons.push(button);
     });
     document.getElementById('user-list').replaceChildren(...buttons)
-    if (records.length == 1) {
+    $("#user-list").on("click", "button", function() {
+        console.log('Selected guest:', $(this).val());
+        populateForm($(this).val());
+        $("#user-list>button.active").removeClass("active");
+        $(this).addClass("active");
+      });
+    if (records.length >= 1) {
+      $("#"+records[0].id).addClass("active");
       await populateForm(records[0].id)
     }
   }
