@@ -1,8 +1,3 @@
-
-:root {
-  --size: 100;
-}
-
 /* latin-ext */
 @font-face {
   font-family: 'Megrim';
@@ -26,29 +21,14 @@
   src: url('../fonts/PoiretOne-Regular.ttf') format('truetype');
 }
 
-#euc1 {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: 10;
-  transform: translate(10%, 25%) rotate(20deg);
-  /*filter: drop-shadow(1px 30px 10px #474747);*/
-  width: 30%;
-  pointer-events: none;
-}
-#euc2 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(-10%, -25%) rotate(330deg);
-  z-index: 10;
-  /*filter: drop-shadow(25px 30px 10px grey);*/
-  width: 50%;
-  pointer-events: none;
-}
-
 * {
   box-sizing: border-box;
+}
+
+html {
+  font-size: 2vmin;
+  height: 100%;
+  overflow: hidden;
 }
 
 body {
@@ -57,7 +37,7 @@ body {
   --lightgreen: #CCD5AE;
   --yellow: #FAEDCD;
   height: 100%;
-  position: absolute;
+  position: relative;
   background: radial-gradient(
     var(--orange), 
     var(--orange), 
@@ -69,7 +49,8 @@ body {
     var(--yellow)
   );
   background-size: 1000% 1000%;
-  animation: gradientShift 60s ease-in-out infinite;
+  /* animation: gradientShift 60s ease-in-out infinite; */
+  overflow: hidden;
 }
 
 body::before {
@@ -91,9 +72,25 @@ body::before {
   100% { background-position: 10% 50%; }
 }
 
-html {
-  font-size: 2vmin;
-  overflow: hidden;
+#euc1 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+  transform: translate(10%, 25%) rotate(20deg);
+  /*filter: drop-shadow(1px 30px 10px #474747);*/
+  width: 30%;
+  pointer-events: none;
+}
+#euc2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-10%, -25%) rotate(330deg);
+  z-index: 10;
+  /*filter: drop-shadow(25px 30px 10px grey);*/
+  width: 50%;
+  pointer-events: none;
 }
 
 h1, h2, h3, h4, p {

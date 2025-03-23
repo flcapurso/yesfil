@@ -10,8 +10,10 @@ $(document).ready(function() {
   console.log(names)
   console.log(secret)
 
-  $('#names').text('Dear ' + names)
-  $('#secret').text(secret)
+  if (names) {
+    $('#names').text('Dear ' + names)
+    $('#secret').text(secret)
+  }
 
 
 });
