@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Fetch Access Codes from Airtable
   async function fetchAccessCodes(accessCode) {
     try {
-      const response = await fetch(`${AIRTABLE_URL}?filterByFormula=%7BAccess+Code%7D+%3D+%22${accessCode}%22`, {
+      const response = await fetch(`${AIRTABLE_URL}?filterByFormula=%7BCode%7D+%3D+%22${accessCode}%22`, {
         headers: {
           Authorization: `Bearer ${AIRTABLE_PAT}`,
         },
