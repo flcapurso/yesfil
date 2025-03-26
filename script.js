@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   var records = []
 
-  var skip = false
+  var skip = true
 
 
   $( "#shared" ).on( "click", function() {
@@ -150,6 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (skip) {
         keyInputSection.classList.add("hidden");
         mainContainer.classList.remove("hidden");
+        $(".menu").show();
       }
       const isValidKey = await fetchAccessCodes(key);
       if (isValidKey) {
@@ -157,19 +158,42 @@ document.addEventListener('DOMContentLoaded', () => {
         mainContainer.classList.remove("hidden");
         await updateUserList();
         await showGuestList();
+        $(".menu").show();
       } else {
         errorMessage.textContent = "Invalid key. Please try again.";
         errorMessage.classList.remove("hidden");
+        console.log("invalid key")
       }
       
     } catch (error) {
 
       errorMessage.textContent = "Invalid key. Please try again.";
       errorMessage.classList.remove("hidden");
+      console.log(error)
     } finally {
       loadingSpinner.classList.add("hidden");
     }
   });
+
+  $(".menu-item").click(function () {
+    $(".menu-item.selected").removeClass("selected");
+    $(this).addClass("selected");
+    let target = $(this).data("target")
+    console.log(target)
+    if (target == ("#rsvp")) { // orange
+      $(":root").css("--bg_image", $(":root").css("--orange_bg",))
+      $("html").removeClass("green")
+    } else if (target == ("#weddingDay")) {
+      $(":root").css("--bg_image", $(":root").css("--green_bg",))
+      $("html").addClass("green")
+    } else if (target == ("#info")) {
+      $(":root").css("--bg_image", $(":root").css("--blue_bg",))
+    }
+    $(".menu").removeClass("expanded")
+    $("main").removeClass("right")
+    $(".content-section.active").removeClass("active")
+    $(target).addClass("active")
+  })
 
   // Content navigation
   document.querySelectorAll('button[data-target]').forEach(button => {
@@ -189,7 +213,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 300);
     });
   });
-
 
   // RSVP Submission Handler
   document.getElementById('rsvp-form').addEventListener('submit', async (e) => {
@@ -232,5 +255,11 @@ document.addEventListener('DOMContentLoaded', () => {
       loadingSpinner.classList.add("hidden");
     }
   });
-
+  
+  $(".menu").click(function() {
+    $(".menu").toggleClass("expanded")
+    $("main").toggleClass("right")
+  }).children().click(function(e) {
+    e.stopPropagation();
+  });
 });

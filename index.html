@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
   <link rel="stylesheet" href="styles.css">
   <script src="jquery-3.7.1.js"></script>
 </head>
+
 <body>
   <!-- Loading Spinner -->
   <div id="loading-spinner" class="loading-overlay hidden">
@@ -17,7 +19,13 @@
     <!-- <div class="spinner"></div> -->
     <progress />
   </div>
-
+  
+  <div class="menu" style="display: none">
+    <div class="menu-item selected orange" data-target="#rsvp" data-text="RSVP"></div>
+    <div class="menu-item orange" data-target="#weddingDay" data-text="Wedding Day"></div>
+    <div class="menu-item orange" data-target="#info" data-text="Additional Info"></div>
+  </div>
+  
   <!-- Key Input Section -->
   <main class="container-fluid">
     <section id="key-input-section">
@@ -28,24 +36,24 @@
         <p id="error-message" class="error-message hidden"></p>
       </form>
     </section>
-
+    
     <!-- Main Content -->
     <div id="main-container" class="hidden">
-      <div class="grid">
+      <!-- <div class="grid">
         <button data-target="rsvp" class="secondary">RSVP</button>
         <button data-target="weddingDay" class="secondary">The Wedding</button>
         <button data-target="info" class="secondary">Additional Info</button>
-      </div>
+      </div> -->
       <div id="content-frame">
         <section id="rsvp" class="content-section active">
           <h3>RSVP</h3>
-          <div id="user-list"class="grid"></div>
+          <div id="user-list" class="grid"></div>
           <form id="rsvp-form">
             <input type="hidden" id="recordId" name="recordId">
-
+            
             <label for="name">Name</label>
             <input type="text" id="name" name="name" required>
-
+            
             <label for="attending">Will you be attending?</label>
             <select id="attending" name="attending" value="" required>
               <option hidden disabled selected value></option>
@@ -53,37 +61,37 @@
               <option value="Maybe">Maybe</option>
               <option value="Nope">Nope</option>
             </select>
-
+            
             <label for="email">Email</label>
             <input type="email" id="email" name="email" required>
-
+            
             <label for="allergies">Allergies</label>
             <textarea id="allergies" name="allergies" required></textarea>
-
-            <div id="labelcheckbox" >
+            
+            <div id="labelcheckbox">
               <label for="shared">Looking to share accommodation or transport (your details will be visible to others)</label>
               <input type="checkbox" id="shared" name="shared">
             </div>
-
+            
             <div id="sharedfields">
               <label for="whatsapp">WhatsApp / Phone</label>
               <input type="tel" id="whatsapp" name="whatsapp" required>
-
+              
               <label for="stayinfo">Stay duration / dates</label>
               <textarea id="stayinfo" name="stayinfo"></textarea>
             </div>
-
+            
             <details id="optionalaccordion">
               <summary>Optional</summary>
             </details>
-              <div id="optionalbox">
-                <label for="songs">Song requests for Party (max 2)</label>
-                <textarea id="songs" name="songs" required></textarea>
-
-                <label for="message">Message</label>
-                <textarea id="message" name="message"></textarea>
-              </div>
-
+            <div id="optionalbox">
+              <label for="songs">Song requests for Party (max 2)</label>
+              <textarea id="songs" name="songs" required></textarea>
+              
+              <label for="message">Message</label>
+              <textarea id="message" name="message"></textarea>
+            </div>
+            
             <button type="submit" class="primary">Submit</button>
           </form>
           <h2>Guests Attending</h2>
@@ -92,8 +100,8 @@
             </table>
           </div>
         </section>
-
-
+        
+        
         <section id="weddingDay" class="content-section">
           <h3>The Wedding</h3>
           <h4>Date: 9th August 2025</h4>
@@ -125,7 +133,7 @@
             <li>19:00 - Finish aperitivos while taking pictures and hugging "newly wed"</li>
             <li>19:30 - Dinner time! Sit at tables and eat (a lot), especially if you are planning to drink Amarone or Rakı</li>
             <li>21:00 - Enjoy the sunset, mingle with other guests while trying not to get drunk with Amari</li>
-            <li>21:30 - Move to indoor space to  dance, make noise and have a blast</li>
+            <li>21:30 - Move to indoor space to dance, make noise and have a blast</li>
           </ul>
           <h4>
             How to get home?
@@ -134,7 +142,7 @@
             We will be organising transport at regular intervals that will take you to your accommodation (probably every 45 min from 22:00)
           </p>
         </section>
-
+        
         <section id="info" class="content-section">
           <h3>Getting to Verona</h3>
           <p>Here is the list of the Airports in order of distance</p>
@@ -154,7 +162,8 @@
       </div>
     </div>
   </main>
-
+  
   <script src="script.js"></script>
 </body>
+
 </html>
