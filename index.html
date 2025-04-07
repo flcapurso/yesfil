@@ -104,13 +104,13 @@
         
         <section id="weddingDay" class="content-section">
           <h3>The Wedding</h3>
-          <h4>Date: 9th August 2025</h4>
+          <h4>Date: 16th August 2025</h4>
           <h4>
-            Venue: Via Roccolo di Roselle 10, Negrar (VR), 37024, Italy
+            Venue: Golf Ca 'Degli Ulivi
+            Address: Via Ghiandare, 2, 37010 Marciaga VR, Italy
           </h4>
-          <p>
-            Add map coordinates
-          </p>
+          <iframe width="100%" height="400px" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ3aXuRk3ygUcRNixi6YXpPz8&key=AIzaSyCYTSib9VFMTgmY23iFqoMFTcpcZ7KUwLo"></iframe>
+          <!-- <div id="googleMap" style="width:100%;height:400px;"></div> -->
           <h4>
             Dress Code
           </h4>
@@ -144,11 +144,11 @@
         </section>
         
         <section id="info" class="content-section">
-          <h3>Getting to Verona</h3>
+          <h3>Getting to Garda</h3>
           <p>Here is the list of the Airports in order of distance</p>
           <ul>
             <li>Verona, VRN Valerio Catullo (30 mimutes, usually very hard to find a flight from most countries)</li>
-            <li>Bergamo, BGY Orio al Serio (1h 30min, usually the cheapest and most serviced)</li>
+            <li>Bergamo, BGY Orio al Serio (1h 15min, usually the cheapest and most serviced)</li>
             <li>Bologna, ... (1h 45min)</li>
             <li>Treviso, ... (1h 45min)</li>
             <li>Milano, LIN Linate (2h)</li>
@@ -157,13 +157,28 @@
           <h3>Transport</h3>
           <p>We suggest to rent a car directly from the airport as public transport is very lacking outside the city center. A good website to compare deals is rentalcars.com and they have their own full coverage insurance with is normally less than the one offered by the companies. if you need a hand planning the logistics, let us know and we can help out :)</p>
           <h3>Accommodation</h3>
-          <p>We suggest to stay close to Negrar, but if you are happy to drive ~30 minutes, then Verona is doable. There is a lot of B&Bs and rooms around (most of them on Airbnb or Booking), just double check their drive distance from the venue on Maps as there are a lot of hills, so it might be further than it looks. If you do not want to spend much, we have a deal with Hotel Konaqui in San Vito, 80 euro/night for a double room and 108 euro/night for a triple room, and Hotel Diamante in Negrar, 100 euro/night for a double room.</p>
+          <p>We suggest to stay close to Garda, but if you are happy to drive then Lazise or Bardolino are also very nice. There is a lot of B&Bs and rooms around (most of them on Airbnb or Booking), just double check their drive distance from the venue on Maps as there are a lot of hills, so it might be further than it looks.</p>
         </section>
       </div>
     </div>
   </main>
   
   <script src="script.js"></script>
+  <script>
+    function myMap() {
+      var mapProp= {
+        center:new google.maps.LatLng(45.5898168,10.7032696),
+        zoom:10,
+      };
+      var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(45.5898168,10.7032696),
+        // animation:google.maps.Animation.BOUNCE
+      });
+      marker.setMap(map);
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYTSib9VFMTgmY23iFqoMFTcpcZ7KUwLo&callback=myMap"></script>
 </body>
 
 </html>

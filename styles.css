@@ -1,10 +1,13 @@
 :root {
+  --default_bg: url('images/orange_water_2.webp');
   --orange_bg: url('images/orange_bg.jpg');
   --green_bg: url('images/green_bg.jpg');
   --blue_bg: url('images/blue_bg.jpg');
-  --bg_image: var(--orange_bg);
+  --bg_image: var(--default_bg);
   
   --orange: #db5236;
+  --green: #046A33;
+  --blue: #006EB6;
   --font-color: var(--orange)
 }
 
@@ -28,7 +31,10 @@ h1, h2, h3, h4, p, label, input, button, li, textarea, select, summary, table * 
   font-weight: 400;
   font-style: normal;
   color: var(--font-color);
+  transition: all 1s;
 }
+
+
 
 #tablebox {
   overflow: auto;
@@ -77,18 +83,14 @@ summary {
 }
 
 html {
-  background: white;
-  background-image: var(--orange_bg);
+  background: transparent;
+  background-image: var(--bg_image);
   background-size: cover;
   background-position-x: 50%;
+  background-position-y: 50%;
   background-attachment: fixed;
   overflow-x: hidden;
-  transition: all 2s;
-}
-
-html.green {
-  background-image: var(--green_bg);
-  transition: all 2s;
+  transition: all 1s;
 }
 
 @media (max-width: 991px) {
@@ -121,6 +123,8 @@ body {
 img {
   max-width: 500px;
   width: 100%;
+  display: block;
+  margin: auto;
 }
 
 progress {
@@ -166,6 +170,7 @@ form {
 /* Custom Form Styles */
 section {
 /*  display: table;*/
+/*  background: rgb(from var(--font-color) r g b / 30%);*/
   background: rgba(247, 223, 199, 0.6);
   padding: 2rem;
   border-radius: 5px;
@@ -227,6 +232,7 @@ button.active {
   transition: all .4s ease-in-out;
   position: relative;
   margin:25px 0;
+  background-color: var(--font-color);
 }
 
 .menu-item.selected {
@@ -247,6 +253,7 @@ button.active {
   opacity: 0;
   visibility: hidden;
   transition: all .5s ease-in-out;
+  color: var(--font-color);
 }
 
 .menu.expanded .menu-item {
@@ -264,6 +271,7 @@ button.active {
   transition: all .9s ease-in-out;
 }
 
+/*
 .menu-item.orange {
   background-color: #C86C5A;
 }
@@ -283,4 +291,4 @@ button.active {
 }
 .menu-item.blue::after {
   color: #006EB6;
-}
+}*/

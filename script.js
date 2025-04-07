@@ -151,6 +151,8 @@ document.addEventListener('DOMContentLoaded', () => {
         keyInputSection.classList.add("hidden");
         mainContainer.classList.remove("hidden");
         $(".menu").show();
+        $(":root").css("--font-color", $(":root").css("--orange",))
+        $(":root").css("--bg_image", $(":root").css("--orange_bg",))
       }
       const isValidKey = await fetchAccessCodes(key);
       if (isValidKey) {
@@ -159,6 +161,8 @@ document.addEventListener('DOMContentLoaded', () => {
         await updateUserList();
         await showGuestList();
         $(".menu").show();
+        $(":root").css("--font-color", $(":root").css("--orange",))
+        $(":root").css("--bg_image", $(":root").css("--orange_bg",))
       } else {
         errorMessage.textContent = "Invalid key. Please try again.";
         errorMessage.classList.remove("hidden");
@@ -181,14 +185,16 @@ document.addEventListener('DOMContentLoaded', () => {
     let target = $(this).data("target")
     console.log(target)
     if (target == ("#rsvp")) { // orange
+      $(":root").css("--font-color", $(":root").css("--orange",))
       $(":root").css("--bg_image", $(":root").css("--orange_bg",))
-      $("html").removeClass("green")
     } else if (target == ("#weddingDay")) {
+      $(":root").css("--font-color", $(":root").css("--green",))
       $(":root").css("--bg_image", $(":root").css("--green_bg",))
-      $("html").addClass("green")
     } else if (target == ("#info")) {
+      $(":root").css("--font-color", $(":root").css("--blue",))
       $(":root").css("--bg_image", $(":root").css("--blue_bg",))
     }
+
     $(".menu").removeClass("expanded")
     $("main").removeClass("right")
     $(".content-section.active").removeClass("active")
@@ -262,4 +268,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }).children().click(function(e) {
     e.stopPropagation();
   });
+
 });
