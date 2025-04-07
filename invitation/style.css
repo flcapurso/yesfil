@@ -73,6 +73,7 @@ body::before {
 }
 
 #euc1 {
+  display: none;
   position: absolute;
   bottom: 0;
   right: 0;
@@ -83,6 +84,7 @@ body::before {
   pointer-events: none;
 }
 #euc2 {
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -207,6 +209,12 @@ h4 {
 .envelope.open .flap.top {
   animation-name: flip;
 }
+.envelope.open {
+  animation-duration: 5s;
+  animation-name: move-down;
+  top:10%;
+}
+
 .envelope .flap.top:after {
   content: '';
   position: absolute;
@@ -284,12 +292,24 @@ h4 {
   }
 }
 
+@keyframes move-down {
+  0% {
+    top: 0px;
+  }
+  50% {
+    top: 40%;
+  }
+  100% {
+    top: 10%;
+  }
+}
+
 @keyframes remove {
   50% {
     top: -100%;
   }
   100% {
-    top: 0px;
+    top: -10%;
     z-index: 3;
   }
 }
