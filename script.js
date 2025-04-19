@@ -5,14 +5,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const errorMessage = document.getElementById('error-message');
 
   // Airtable Configuration
-  const AIRTABLE_PAT = "patsLyV0YxSHc0Sdi.9f968108897338d11cdec1c6dbd4e495b61f5b4ae123d11acb2ac026320e9c13"; // Replace with your PAT
+  const TMP_PAT = "patsLyV0YxSHc0Sdi.9f968108897338d11cdec1c6dbd4e495b61f5b4ae123d11acb2ac026320e9c13";
+  let AIRTABLE_PAT = ""; // will be retrieved if access code is correct
   const AIRTABLE_BASE_ID = "app4SV3eWvOgThgQi"; // Replace with your Base ID
   const AIRTABLE_TABLE_NAME = "Guest List"; // Replace with your Table Name
   const AIRTABLE_URL = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}`;
 
   var records = []
 
-  var skip = true
+  var skip = false
 
 
   $( "#shared" ).on( "click", function() {
@@ -24,17 +25,37 @@ document.addEventListener('DOMContentLoaded', () => {
     $( "#optionalbox" ).toggle( 200 );
   });
 
+  $('textarea').keypress(function(event) {
+    if (event.keyCode == 13) {
+        event.preventDefault();
+    }
+  });
+
   // Fetch Access Codes from Airtable
   async function fetchAccessCodes(accessCode) {
     try {
       const response = await fetch(`${AIRTABLE_URL}?filterByFormula=%7BCode%7D+%3D+%22${accessCode}%22`, {
         headers: {
-          Authorization: `Bearer ${AIRTABLE_PAT}`,
+          Authorization: `Bearer ${TMP_PAT}`,
         },
       });
       const data = await response.json();
       records = data.records
-      return data.records.length > 0; // Return true if a record is found
+      if (data.records.length > 0) {
+        AIRTABLE_PAT = data.records[0].fields.PAT
+        // console.log(data.records[0].fields["Message from us"])
+        if(data.records[0].fields["Message from us"]) {
+          $("#message-from-us").text(data.records[0].fields["Message from us"])
+          $("#message-from-us").show()
+        }
+        else {
+          $("#message-from-us").hide()
+        }
+        return true; // Return true if a record is found
+      }
+      else {
+        return false;
+      }
     } catch (error) {
       console.error("Error fetching data from Airtable:", error);
       return false;

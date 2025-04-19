@@ -45,10 +45,10 @@ h1, h2, h3, h4, p, label, input, button, li, textarea, select, summary, table * 
   margin-bottom: 20px;
 }
 
-#sharedfields {
+/*#sharedfields {
   border-bottom: 1px solid var(--font-color);
   margin-bottom: 20px;
-}
+}*/
 
 #labelcheckbox > * {
   margin-right: 20px;
@@ -271,6 +271,17 @@ button.active {
   transition: all .9s ease-in-out;
 }
 
+details summary {
+  line-height: 2rem;
+  padding-top: 10px;
+  border-top: 1px solid var(--orange);
+}
+
+details summary::after {
+  width: 2rem;
+  height: 2rem;
+  background-size: 2rem auto;
+}
 /*
 .menu-item.orange {
   background-color: #C86C5A;
