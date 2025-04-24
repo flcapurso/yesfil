@@ -51,6 +51,50 @@ document.addEventListener('DOMContentLoaded', () => {
         else {
           $("#message-from-us").hide()
         }
+        const lan = data.records[0].fields.Language;
+        switch(lan){
+          case "eng":
+            $(".eng").show()
+            $(".ita").hide()
+            $(".tur").hide()
+            break;
+          case "tur":
+            $(".eng").hide()
+            $(".ita").hide()
+            $(".tur").show()
+            break;
+          case "ita":
+            $(".eng").hide()
+            $(".ita").show()
+            $(".tur").hide()
+            break;
+          default:
+            $(".eng").show()
+            $(".ita").hide()
+            $(".tur").hide()
+            console.log("Could find language")
+        }
+        const pagesURL = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/Static`;
+        try {
+          const pageResponse = await fetch(`${pagesURL}?filterByFormula=%7BLanguage%7D+%3D+%22${lan}%22`, {
+            headers: {
+              Authorization: `Bearer ${TMP_PAT}`,
+            },
+          });
+          const data = await pageResponse.json();
+          if (data.records.length > 0) {
+            console.log("Success pages")
+            $("#weddingDay").html(data.records[0].Wedding)
+            $("#info").html(data.records[0].Additional)
+          }
+          else {
+            console.log("Could find language")
+          }
+        }
+        catch (error) {
+          console.error("Error fetching pages from Airtable:", error);
+          throw error;
+        }
         return true; // Return true if a record is found
       }
       else {

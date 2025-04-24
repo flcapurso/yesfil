@@ -1,6 +1,6 @@
 :root {
   --default_bg: url('images/orange_water_2.webp');
-  --orange_bg: url('images/orange_bg.jpg');
+  --orange_bg: url('images/orange_bg.jpeg');
   --green_bg: url('images/green_bg.jpg');
   --blue_bg: url('images/blue_bg.jpg');
   --bg_image: var(--default_bg);
@@ -180,7 +180,8 @@ section {
 }
 
 main {
-  padding:15% !important;
+  padding-left:15% !important;
+  padding-right:15% !important;
   transition: all .8s ease-in-out;
   margin-left:0 !important;
 }
@@ -282,6 +283,7 @@ details summary::after {
   height: 2rem;
   background-size: 2rem auto;
 }
+
 /*
 .menu-item.orange {
   background-color: #C86C5A;
