@@ -1,8 +1,33 @@
 document.addEventListener('DOMContentLoaded', () => {
   const keyInputSection = document.getElementById('key-input-section');
   const mainContainer = document.getElementById('main-container');
-  const loadingSpinner = document.getElementById('loading-spinner');
   const errorMessage = document.getElementById('error-message');
+  
+  var imageList = []
+  var lastImage = new Image()
+for (var i = 1; i <= 15; i++) {
+  var img = new Image()
+  imageList.push(img)
+  img.src = `images/loading/${i}.jpg`
+  lastImage = img
+}
+lastImage.onload = function () {
+  console.log("done")
+}
+  var lastLoadChange = 0
+$("#loading-spinner").hide()
+function showLoading() {
+  $("#loading-spinner").show()
+  if ((Date.now() - lastLoadChange) > 2000) {
+  lastLoadChange = Date.now()
+  $("#loading-image").hide()
+  let imageInt = Math.floor((Math.random() * 15) + 1);
+  $("#loading-image").attr('src', `images/loading/${imageInt}.jpg`).on('load', function() {
+  $("#loading-image").show()
+});
+}
+}
+
 
   // Airtable Configuration
   const TMP_PAT = "patsLyV0YxSHc0Sdi.9f968108897338d11cdec1c6dbd4e495b61f5b4ae123d11acb2ac026320e9c13";
@@ -108,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function populateForm(recordId) {
     try {
-      loadingSpinner.classList.remove("hidden");
+      showLoading();
       const response = await fetch(`${AIRTABLE_URL}/${recordId}`, {
         headers: {
           Authorization: `Bearer ${AIRTABLE_PAT}`,
@@ -141,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       console.error("Error fetching data from Airtable:", error);
     } finally {
-      loadingSpinner.classList.add("hidden");
+      $("#loading-spinner").hide();
     }
   }
 
@@ -169,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Show current Guest List
   async function showGuestList() {
-    loadingSpinner.classList.remove("hidden");
+    showLoading();
     try {
       const response = await fetch(`${AIRTABLE_URL}?filterByFormula=OR(Attending%3D%22Yep%22%2C+Attending%3D%22Maybe%22)`, {
         headers: {
@@ -202,14 +227,14 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       console.error("Error fetching data from Airtable:", error);
     } finally {
-      loadingSpinner.classList.add("hidden");
+      $("#loading-spinner").hide();
     }
   }
 
   // Check access key & grant access
   document.getElementById('submit-key').addEventListener('click', async () => {
     const key = document.getElementById('key-input').value.trim();
-    loadingSpinner.classList.remove("hidden");
+    showLoading();
     errorMessage.classList.add("hidden");
     
     try {
@@ -241,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
       errorMessage.classList.remove("hidden");
       console.log(error)
     } finally {
-      loadingSpinner.classList.add("hidden");
+      $("#loading-spinner").hide();
     }
   });
 
@@ -291,7 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault(); // Prevent default form submission
 
     // Show loading spinner
-    loadingSpinner.classList.remove("hidden");
+    showLoading();
 
     // Get form data
     const formData = new FormData(e.target);
@@ -324,7 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
       alert('Something went wrong. Please try again.');
     } finally {
       // Hide loading spinner
-      loadingSpinner.classList.add("hidden");
+      $("#loading-spinner").hide();
     }
   });
   
