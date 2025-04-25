@@ -31,8 +31,8 @@
     <section id="key-input-section">
       <img id="home" src="images/password.gif">
       <form>
-        <input type="text" id="key-input" placeholder="Super Secret Code">
-        <button type="button" id="submit-key">Submit</button>
+        <input type="text" id="key-input" placeholder="Super Secret Code / Şifre">
+        <button type="button" id="submit-key">Submit / Gönder / Conferma</button>
         <p id="error-message" class="error-message hidden"></p>
       </form>
     </section>
@@ -53,53 +53,79 @@
             <input type="hidden" id="recordId" name="recordId">
             
             <label class="eng" for="name">Name</label>
-            <label class="tur" for="name">Ad</label>
+            <label class="tur" for="name">İsim</label>
             <label class="ita" for="name">Nome</label>
             <input type="text" id="name" name="name" required>
             
             <label class="eng" for="attending">Will you be attending?</label>
-            <label class="tur" for="attending">Katılacaksın mı?</label>
+            <label class="tur" for="attending">Katılacak mısınız?</label>
             <label class="ita" for="attending">Parteciperai?</label>
             <select id="attending" name="attending" value="" required>
               <option hidden disabled selected value></option>
-              <option value="Yep">Yep</option>
-              <option value="Maybe">Maybe</option>
-              <option value="Nope">Nope</option>
+              <option class="eng" value="Yep">Yep</option>
+              <option class="tur" value="Yep">Evet</option>
+              <option class="ita" value="Yep">Sì!</option>
+              <option class="eng" value="Maybe">Maybe</option>
+              <option class="eng" value="Maybe">Belki</option>
+              <option class="eng" value="Maybe">Forse...</option>
+              <option class="eng" value="Nope">Nope</option>
+              <option class="eng" value="Nope">Hayır</option>
+              <option class="eng" value="Nope">No :(</option>
             </select>
             
-            <label for="email">Email</label>
+            <label for="email">Email</label>          
             <input type="email" id="email" name="email" required>
             
-            <label for="allergies">Allergies</label>
+            <label class="eng" for="allergies">Dietery Restrictions</label>
+            <label class="tur" for="allergies">Yiyecek Kısıtlamaları</label>
+            <label class="ita" for="allergies">Restrizioni dietetiche</label>
             <textarea id="allergies" name="allergies" required></textarea>
             
             <div id="labelcheckbox">
-              <label for="shared">Looking to share accommodation or transport (your details will be visible to others)</label>
+              <label class="eng" for="shared">Looking to share accommodation or transport (your details will be visible to others)</label>
+              <label class="tur" for="shared">Başkalarıyla kalacak yer (otel, airbnb) ya da ulaşım (araba kiralama vs.) paylaşmayı tercih eder misiniz? Eğer istiyorsanız bilgileriniz diğer paylaşmak isteyen kişiler ile paylaşılacak. </label>
+              <label class="ita" for="shared">Stai cercando alloggio / transporto condiviso? (I tuoi dettagli di contatto saranno condivisi)</label>
               <input type="checkbox" id="shared" name="shared">
             </div>
             
             <div id="sharedfields">
-              <label for="whatsapp">WhatsApp / Phone</label>
+              <label class="eng" for="whatsapp">WhatsApp / Phone</label>
+              <label class="tur" for="whatsapp">WhatsApp / Telefon</label>
+              <label class="ita" for="whatsapp">WhatsApp / Cellulare</label>
               <input type="tel" id="whatsapp" name="whatsapp" required>
               
-              <label for="stayinfo">Stay duration / dates</label>
+              <label class="eng" for="stayinfo">Stay duration / dates</label>
+              <label class="tur" for="stayinfo">Kalış süresi / tarihler</label>
+              <label class="ita" for="stayinfo">Durata di permanenza / date</label>
               <textarea id="stayinfo" name="stayinfo"></textarea>
             </div>
             
             <details id="optionalaccordion">
-              <summary>Optional</summary>
+              <summary>
+                <tag class="eng" >Optional</tag>
+                <tag class="tur" >Opsiyonel</tag>
+                <tag class="ita" >Opzionali</tag>
+              </summary>
             </details>
             <div id="optionalbox">
-              <label for="songs">Song requests for Party (max 2)</label>
+              <label class="eng" for="songs">Song requests for Party (max 2)</label>
+              <label class="tur" for="songs">Parti için şarkı istekleri (en fazla 2)</label>
+              <label class="ita" for="songs">Richiesta canzoni per la festa (max 2)</label>
               <textarea id="songs" name="songs" required></textarea>
               
-              <label for="message">Message</label>
+              <label class="eng" for="message">Do you have a message/comment for us?</label>
+              <label class="tur" for="message">Bize bir mesajınız/yorumunuz var mı?</label>
+              <label class="ita" for="message">Hai un messaggio/commento per noi?</label>
               <textarea id="message" name="message"></textarea>
             </div>
             
-            <button type="submit" class="primary">Submit</button>
+            <button type="submit" class="primary eng">Submit</button>
+            <button type="submit" class="primary tur">Gönder</button>
+            <button type="submit" class="primary ita">Conferma</button>
           </form>
-          <h2>Guests Attending</h2>
+          <h2 class="eng" >Guests looking to Share Accomadation or Transport</h2>
+          <h2 class="tur" >Kalacak yer ya da ulaşım paylaşmayı düşünen misafirler</h2>
+          <h2 class="ita" >Invitati che stanno cercando alloggio/transporto condiviso</h2>
           <div id="tablebox">
             <table id="guest-list">
             </table>

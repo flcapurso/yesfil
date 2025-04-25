@@ -180,7 +180,8 @@ document.addEventListener('DOMContentLoaded', () => {
       records = data.records
       console.log(records)
 
-      const listOfFieldsToShow = ["Name", "Attending", "Ideal stay duration"]
+      const listOfFieldsToShow = ["Name/İsim/Nome", "Attending", "Ideal stay duration"]
+
 
       let tableContent = '<thead><tr>'
       for (const field of listOfFieldsToShow) {
