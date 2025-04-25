@@ -81,11 +81,11 @@
               <option class="tur" value="Yep">Evet</option>
               <option class="ita" value="Yep">Sì!</option>
               <option class="eng" value="Maybe">Maybe</option>
-              <option class="eng" value="Maybe">Belki</option>
-              <option class="eng" value="Maybe">Forse...</option>
+              <option class="tur" value="Maybe">Belki</option>
+              <option class="ita" value="Maybe">Forse...</option>
               <option class="eng" value="Nope">Nope</option>
-              <option class="eng" value="Nope">Hayır</option>
-              <option class="eng" value="Nope">No :(</option>
+              <option class="tur" value="Nope">Hayır</option>
+              <option class="ita" value="Nope">No :(</option>
             </select>
             
             <label for="email">Email</label>          
@@ -95,14 +95,26 @@
             <label class="tur" for="allergies">Yiyecek Kısıtlamaları</label>
             <label class="ita" for="allergies">Restrizioni dietetiche</label>
             <textarea id="allergies" name="allergies" required></textarea>
-            
+
+            <div id="shuttlecheckbox">
+              <label class="eng" for="shared">Would you like to use the shuttle service on the wedding day?</label>
+              <label class="tur" for="shared">NEED TO TRANSLATE</label>
+              <label class="ita" for="shared">Vuoi usare il servizio navetta ıl giorno dell'evento?</label>
+              <input type="checkbox" id="shuttle" name="shuttle">
+            </div>
+            <div id="shuttlefields">
+              <label class="eng" for="whatsapp">Your accomodation address (can be added later)</label>
+              <label class="tur" for="whatsapp">NEED TO TRANSLATE</label>
+              <label class="ita" for="whatsapp">Indirizzo del tuo alloggio (puoi aggiungerlo più tardi)</label>
+              <input type="text" id="shuttleAddress" name="shuttleAddress">
+            </div>
+
             <div id="labelcheckbox">
               <label class="eng" for="shared">Looking to share accommodation or transport (your details will be visible to others)</label>
               <label class="tur" for="shared">Başkalarıyla kalacak yer (otel, airbnb) ya da ulaşım (araba kiralama vs.) paylaşmayı tercih eder misiniz? Eğer istiyorsanız bilgileriniz diğer paylaşmak isteyen kişiler ile paylaşılacak. </label>
               <label class="ita" for="shared">Stai cercando alloggio / transporto condiviso? (I tuoi dettagli di contatto saranno condivisi)</label>
               <input type="checkbox" id="shared" name="shared">
             </div>
-            
             <div id="sharedfields">
               <label class="eng" for="whatsapp">WhatsApp / Phone</label>
               <label class="tur" for="whatsapp">WhatsApp / Telefon</label>

@@ -34,11 +34,18 @@ h1, h2, h3, h4, p, label, input, button, li, textarea, select, summary, table * 
   transition: all 1s;
 }
 
+a {
+  text-decoration: underline;
+}
 
 
 #tablebox {
   overflow: auto;
   white-space: nowrap;
+}
+
+#shuttlecheckbox {
+  margin-bottom: 20px;
 }
 
 #labelcheckbox {

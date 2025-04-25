@@ -41,6 +41,10 @@ function showLoading() {
   var skip = false
 
 
+  $( "#shuttle" ).on( "click", function() {
+    $( "#shuttlefields" ).toggle( 200 );
+  });
+
   $( "#shared" ).on( "click", function() {
     $( "#sharedfields" ).toggle( 200 );
   });
@@ -109,8 +113,9 @@ function showLoading() {
           const data = await pageResponse.json();
           if (data.records.length > 0) {
             console.log("Success pages")
-            $("#weddingDay").html(data.records[0].Wedding)
-            $("#info").html(data.records[0].Additional)
+            console.log(data.records[0].fields.Wedding)
+            $("#weddingDay").html(data.records[0].fields.Wedding)
+            $("#info").html(data.records[0].fields.Additional)
           }
           else {
             console.log("Could find language")
@@ -146,6 +151,8 @@ function showLoading() {
       form.elements["attending"].value = data.fields.Attending || ""
       form.elements["email"].value = data.fields.Email || ""
       form.elements["allergies"].value = data.fields.Allergies || ""
+      form.elements["shuttle"].checked = data.fields.Shuttle || false
+      form.elements["shuttleAddress"].value = data.fields["Shuttle Address"] || ""
       form.elements["shared"].checked = data.fields.Shared || false
       form.elements["whatsapp"].value = data.fields.WhatsApp || ""
       form.elements["stayinfo"].value = data.fields.StayInfo || ""
@@ -155,7 +162,13 @@ function showLoading() {
       // for (const [key, value] of Object.entries(data.fields)) {
       //   console.log(key, value);
       // }
-      console.log
+
+      if (data.fields.Shuttle) {
+        $( "#shuttlefields" ).show();
+      } else {
+        $( "#shuttlefields" ).hide();
+      }
+
       if (data.fields.Shared) {
         $( "#sharedfields" ).show();
       } else {
