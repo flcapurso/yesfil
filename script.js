@@ -5,29 +5,29 @@ document.addEventListener('DOMContentLoaded', () => {
   
   var imageList = []
   var lastImage = new Image()
-for (var i = 1; i <= 15; i++) {
-  var img = new Image()
-  imageList.push(img)
-  img.src = `images/loading/${i}.jpg`
-  lastImage = img
-}
-lastImage.onload = function () {
-  console.log("done")
-}
-  var lastLoadChange = 0
-$("#loading-spinner").hide()
-function showLoading() {
-  $("#loading-spinner").show()
-  if ((Date.now() - lastLoadChange) > 2000) {
-  lastLoadChange = Date.now()
-  $("#loading-image").hide()
-  let imageInt = Math.floor((Math.random() * 15) + 1);
-  $("#loading-image").attr('src', `images/loading/${imageInt}.jpg`).on('load', function() {
-  $("#loading-image").show()
-});
-}
-}
+  for (var i = 1; i <= 12; i++) {
+    var img = new Image()
+    imageList.push(img)
+    img.src = `images/loading/${i}.jpg`
+    lastImage = img
+  }
+  lastImage.onload = function () {
+    console.log("done")
+  }
 
+  var lastLoadChange = 0
+  $("#loading-spinner").hide()
+  function showLoading() {
+    $("#loading-spinner").show()
+    if ((Date.now() - lastLoadChange) > 2000) {
+      lastLoadChange = Date.now()
+      $("#loading-image").hide()
+      let imageInt = Math.floor((Math.random() * 12) + 1);
+      $("#loading-image").attr('src', `images/loading/${imageInt}.jpg`).on('load', function() {
+        $("#loading-image").show()
+      });
+    }
+  }
 
   // Airtable Configuration
   const TMP_PAT = "patsLyV0YxSHc0Sdi.9f968108897338d11cdec1c6dbd4e495b61f5b4ae123d11acb2ac026320e9c13";
@@ -59,6 +59,15 @@ function showLoading() {
         event.preventDefault();
     }
   });
+
+  // Submit on enter
+  $('#key-input').keypress(function (e) {
+  if (e.which == 13) {
+    console.log("Enter pressed")
+    $('#submit-key').click();
+    return false;
+  }
+});
 
   // Fetch Access Codes from Airtable
   async function fetchAccessCodes(accessCode) {
@@ -113,7 +122,6 @@ function showLoading() {
           const data = await pageResponse.json();
           if (data.records.length > 0) {
             console.log("Success pages")
-            console.log(data.records[0].fields.Wedding)
             $("#weddingDay").html(data.records[0].fields.Wedding)
             $("#info").html(data.records[0].fields.Additional)
           }
@@ -209,20 +217,21 @@ function showLoading() {
   async function showGuestList() {
     showLoading();
     try {
-      const response = await fetch(`${AIRTABLE_URL}?filterByFormula=OR(Attending%3D%22Yep%22%2C+Attending%3D%22Maybe%22)`, {
+      const response = await fetch(`${AIRTABLE_URL}?filterByFormula=Shared%3DTRUE()`, {
         headers: {
           Authorization: `Bearer ${AIRTABLE_PAT}`,
         },
       });
       const data = await response.json();
       records = data.records
-      console.log(records)
+      // console.log(records)
 
-      const listOfFieldsToShow = ["Name/İsim/Nome", "Attending", "Ideal stay duration"]
+      const listOfFieldsToShow = ["Name", "WhatsApp", "StayInfo"]
+      const columnNames = ["Name/İsim/Nome", "WhatsApp", "Stay duration / Kalış süresi / Durata di permanenza"]
 
 
       let tableContent = '<thead><tr>'
-      for (const field of listOfFieldsToShow) {
+      for (const field of columnNames) {
         tableContent += `<th scope="col">${field}</th>`
       }
       tableContent += '</tr></thead><tbody>'
@@ -245,8 +254,13 @@ function showLoading() {
   }
 
   // Check access key & grant access
-  document.getElementById('submit-key').addEventListener('click', async () => {
-    const key = document.getElementById('key-input').value.trim();
+  $('#submit-key').on('click', async function() {
+    const key = document.getElementById('key-input').value.toLowerCase().trim();
+    if (key == "") {
+      errorMessage.textContent = "Incorrect / Yanlış / Errata";
+      errorMessage.classList.remove("hidden");
+      return false;
+    }
     showLoading();
     errorMessage.classList.add("hidden");
     
@@ -268,14 +282,14 @@ function showLoading() {
         $(":root").css("--font-color", $(":root").css("--orange",))
         $(":root").css("--bg_image", $(":root").css("--orange_bg",))
       } else {
-        errorMessage.textContent = "Invalid key. Please try again.";
+        errorMessage.textContent = "Incorrect / Yanlış / Errata";
         errorMessage.classList.remove("hidden");
         console.log("invalid key")
       }
       
     } catch (error) {
 
-      errorMessage.textContent = "Invalid key. Please try again.";
+      errorMessage.textContent = "Internet error :( Ask Fil ";
       errorMessage.classList.remove("hidden");
       console.log(error)
     } finally {

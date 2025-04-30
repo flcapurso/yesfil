@@ -22,9 +22,6 @@
   <link rel="preload" href="images/loading/10.jpg" as="image">
   <link rel="preload" href="images/loading/11.jpg" as="image">
   <link rel="preload" href="images/loading/12.jpg" as="image">
-  <link rel="preload" href="images/loading/13.jpg" as="image">
-  <link rel="preload" href="images/loading/14.jpg" as="image">
-  <link rel="preload" href="images/loading/15.jpg" as="image">
 </head>
 
 <body>
@@ -45,8 +42,8 @@
   <main class="container-fluid">
     <section id="key-input-section">
       <img id="home" src="images/password.gif">
-      <form>
-        <input type="text" id="key-input" placeholder="Super Secret Code / Şifre">
+      <form id="access-key-form">
+        <input type="text" id="key-input" autocorrect="off" autocapitalize="none" placeholder="Super Secret Code / Gizli Erişim Kodu / Codice Segreto">
         <button type="button" id="submit-key">Submit / Gönder / Conferma</button>
         <p id="error-message" class="error-message hidden"></p>
       </form>
@@ -150,9 +147,9 @@
             <button type="submit" class="primary tur">Gönder</button>
             <button type="submit" class="primary ita">Conferma</button>
           </form>
-          <h2 class="eng" >Guests looking to Share Accomadation or Transport</h2>
-          <h2 class="tur" >Kalacak yer ya da ulaşım paylaşmayı düşünen misafirler</h2>
-          <h2 class="ita" >Invitati che stanno cercando alloggio/transporto condiviso</h2>
+          <h3 class="eng" >Guests looking to Share Accomadation or Transport</h3>
+          <h3 class="tur" >Kalacak yer ya da ulaşım paylaşmayı düşünen misafirler</h3>
+          <h3 class="ita" >Invitati che stanno cercando alloggio/transporto condiviso</h3>
           <div id="tablebox">
             <table id="guest-list">
             </table>
