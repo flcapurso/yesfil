@@ -22,6 +22,11 @@
   <link rel="preload" href="images/loading/10.jpg" as="image">
   <link rel="preload" href="images/loading/11.jpg" as="image">
   <link rel="preload" href="images/loading/12.jpg" as="image">
+  <link rel="preload" href="images/covers/1.jpeg" as="image">
+  <link rel="preload" href="images/covers/2.jpeg" as="image">
+  <link rel="preload" href="images/covers/3.jpeg" as="image">
+  <link rel="preload" href="images/covers/4.jpeg" as="image">
+  <link rel="preload" href="images/covers/5.jpeg" as="image">
 </head>
 
 <body>
@@ -32,13 +37,22 @@
     <progress />
   </div>
   
+  <!-- Navigation Menu -->
   <div class="menu" style="display: none">
     <div class="menu-item selected orange" data-target="#rsvp" data-text="RSVP"></div>
     <div class="menu-item orange" data-target="#weddingDay" data-text="Wedding Day"></div>
     <div class="menu-item orange" data-target="#info" data-text="Additional Info"></div>
   </div>
   
-  <!-- Key Input Section -->
+  <!-- Cover Image -->
+  <div id="cover-container">
+    <div style="position: absolute; height: 100%; width: 100%; background: black;">
+      <img id="cover1" src="images/covers/1.jpeg">
+      <img id="cover2" src="images/covers/2.jpeg">
+      <img id="cover3" src="images/covers/3.jpeg">
+    </div>
+  </div>
+
   <main class="container-fluid">
     <section id="key-input-section">
       <img id="home" src="images/password.gif">

@@ -72,9 +72,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-    $('#rsvp-form').change(function() {
-      formModified = true
-    });
+  $('#rsvp-form').change(function() {
+    formModified = true
+  });
+
+  $("#cover-container").click(function() {
+    $("html, body").animate({ scrollTop: $(".container-fluid").offset().top}, 1000);
+  })
 
   // Fetch Access Codes from Airtable
   async function fetchAccessCodes(accessCode) {
@@ -288,11 +292,14 @@ document.addEventListener('DOMContentLoaded', () => {
         $(":root").css("--font-color", $(":root").css("--orange",))
         $(":root").css("--bg_image", $(":root").css("--orange_bg",))
         $("#loading-spinner").hide();
+        $("#cover-container").hide();
+        
         return;
       }
       const isValidKey = await fetchAccessCodes(key);
       if (isValidKey) {
         keyInputSection.classList.add("hidden");
+        $("#cover-container").hide();
         mainContainer.classList.remove("hidden");
         await updateUserList();
         await showGuestList();
