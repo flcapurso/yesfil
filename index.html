@@ -89,24 +89,24 @@
             <input type="email" id="email" name="email" required>
             
             <label class="eng" for="allergies">Dietery Restrictions</label>
-            <label class="tur" for="allergies">Yiyecek Kısıtlamaları</label>
+            <label class="tur" for="allergies">Varsa Yiyecek Alerjiniz</label>
             <label class="ita" for="allergies">Restrizioni dietetiche</label>
             <textarea id="allergies" name="allergies"></textarea>
 
-            <div id="shuttlecheckbox">
+            <div id="checkbox-container">
               <label class="eng" for="shared">Would you like to use the shuttle service on the wedding day?</label>
-              <label class="tur" for="shared">NEED TO TRANSLATE</label>
+              <label class="tur" for="shared">Düğün gününde servisi kullanmak ister misiniz?</label>
               <label class="ita" for="shared">Vuoi usare il servizio navetta ıl giorno dell'evento?</label>
               <input type="checkbox" id="shuttle" name="shuttle">
             </div>
             <div id="shuttlefields">
               <label class="eng" for="whatsapp">Your accomodation address (can be added later)</label>
-              <label class="tur" for="whatsapp">NEED TO TRANSLATE</label>
+              <label class="tur" for="whatsapp">Kalacağınız yerin adresi (daha sonradan eklenebilir)</label>
               <label class="ita" for="whatsapp">Indirizzo del tuo alloggio (puoi aggiungerlo più tardi)</label>
               <input type="text" id="shuttleAddress" name="shuttleAddress">
             </div>
 
-            <div id="labelcheckbox">
+            <div id="checkbox-container">
               <label class="eng" for="shared">Looking to share accommodation or transport (your details will be visible to others)</label>
               <label class="tur" for="shared">Başkalarıyla kalacak yer (otel, airbnb) ya da ulaşım (araba kiralama vs.) paylaşmayı tercih eder misiniz? Eğer istiyorsanız bilgileriniz diğer paylaşmak isteyen kişiler ile paylaşılacak. </label>
               <label class="ita" for="shared">Stai cercando alloggio / transporto condiviso? (I tuoi dettagli di contatto saranno condivisi)</label>
@@ -132,13 +132,20 @@
               </summary>
             </details>
             <div id="optionalbox">
-              <label class="eng" for="songs">Song requests for Party (max 2)</label>
-              <label class="tur" for="songs">Parti için şarkı istekleri (en fazla 2)</label>
+              <label class="eng" for="songs">Song requests for the Party (max 2)</label>
+              <label class="tur" for="songs">Şarkı istekleri (en fazla 2)</label>
               <label class="ita" for="songs">Richiesta canzoni per la festa (max 2)</label>
               <textarea id="songs" name="songs"></textarea>
+
+              <div id="checkbox-container">
+                <label class="eng" for="play">In case Fil has time to plan a small game for the event, would you like to join?</label>
+                <label class="tur" for="play">Need to translate</label>
+                <label class="ita" for="play">Nel caso Filippo abbia tempo di pianificare un gioco per l'evento, vorresti partecipare?</label>
+                <input type="checkbox" id="play" name="play">
+              </div>
               
-              <label class="eng" for="message">Do you have a message/comment for us?</label>
-              <label class="tur" for="message">Bize bir mesajınız/yorumunuz var mı?</label>
+              <label class="eng" for="message">Do you have a message/comment/question for us?</label>
+              <label class="tur" for="message">Bize bir mesajınız/yorumunuz/sorunuz var mı?</label>
               <label class="ita" for="message">Hai un messaggio/commento per noi?</label>
               <textarea id="message" name="message"></textarea>
             </div>

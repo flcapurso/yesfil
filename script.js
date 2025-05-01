@@ -37,6 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const AIRTABLE_URL = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}`;
 
   var records = []
+  var lan = "eng"
+  var formModified = false
 
   var skip = false
 
@@ -62,12 +64,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Submit on enter
   $('#key-input').keypress(function (e) {
-  if (e.which == 13) {
-    console.log("Enter pressed")
-    $('#submit-key').click();
-    return false;
-  }
-});
+    if (e.which == 13) {
+      console.log("Enter pressed")
+      $('#submit-key').click();
+      return false;
+    }
+  });
+
+
+    $('#rsvp-form').change(function() {
+      formModified = true
+    });
 
   // Fetch Access Codes from Airtable
   async function fetchAccessCodes(accessCode) {
@@ -89,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         else {
           $("#message-from-us").hide()
         }
-        const lan = data.records[0].fields.Language;
+        lan = data.records[0].fields.Language;
         switch(lan){
           case "eng":
             $(".eng").show()
@@ -165,6 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
       form.elements["whatsapp"].value = data.fields.WhatsApp || ""
       form.elements["stayinfo"].value = data.fields.StayInfo || ""
       form.elements["songs"].value = data.fields.Songs || ""
+      form.elements["play"].checked = data.fields.Play || false
       form.elements["message"].value = data.fields.Message || ""
 
       // for (const [key, value] of Object.entries(data.fields)) {
@@ -187,6 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       console.error("Error fetching data from Airtable:", error);
     } finally {
+      formModified = false
       $("#loading-spinner").hide();
     }
   }
@@ -202,6 +211,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     document.getElementById('user-list').replaceChildren(...buttons)
     $("#user-list").on("click", "button", function() {
+        if (formModified) {
+          let confirmed = confirm("Some fields for the current guest have been modified. Do you want to ignore them and move to the next guest?")
+          if (!confirmed) {
+            return;
+          }
+        }
         console.log('Selected guest:', $(this).val());
         populateForm($(this).val());
         $("#user-list>button.active").removeClass("active");
@@ -253,6 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+
   // Check access key & grant access
   $('#submit-key').on('click', async function() {
     const key = document.getElementById('key-input').value.toLowerCase().trim();
@@ -271,6 +287,8 @@ document.addEventListener('DOMContentLoaded', () => {
         $(".menu").show();
         $(":root").css("--font-color", $(":root").css("--orange",))
         $(":root").css("--bg_image", $(":root").css("--orange_bg",))
+        $("#loading-spinner").hide();
+        return;
       }
       const isValidKey = await fetchAccessCodes(key);
       if (isValidKey) {
@@ -297,6 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Menu navigation
   $(".menu-item").click(function () {
     $(".menu-item.selected").removeClass("selected");
     $(this).addClass("selected");
@@ -347,11 +366,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Get form data
     const formData = new FormData(e.target);
+    console.log(formData.get('shuttle'))
     const data = {
       fields: {
         Name: formData.get('name'),
         Email: formData.get('email'),
-        Attending: formData.get('attending')
+        Attending: formData.get('attending'),
+        Allergies: formData.get('allergies'),
+        Shuttle: formData.get('shuttle') ? true : false,
+        "Shuttle Address": formData.get('shuttleAddress'),
+        Shared: formData.get('shared') ? true : false,
+        WhatsApp: formData.get('whatsapp'),
+        StayInfo: formData.get('stayinfo'),
+        Songs: formData.get('songs'),
+        Play: formData.get('play') ? true : false,
+        Message: formData.get('message')
       },
     };
 
@@ -370,10 +399,41 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!response.ok) {
         throw new Error('Failed to submit form');
       }
-      alert('Thank you! Your response has been recorded.');
+      else {
+        let message = ""
+        switch(lan){
+          case "eng":
+            message = `Details updated for ${data.fields.Name}!`
+            break;
+          case "tur":
+            message = `NEED TO TRANSLATE - ${data.fields.Name}`
+            break;
+          case "ita":
+            message = `Dettagli aggiornati per ${data.fields.Name}!`
+          default:
+            message = `Details updated for ${data.fields.Name}`
+            console.log("Could find language", lan)
+        }
+        alert(message);
+        formModified = false;
+      }
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('Something went wrong. Please try again.');
+      let message = ""
+      switch(lan){
+        case "eng":
+          message = 'Something went wrong while updating details. Please get angry with Fil'
+          break;
+        case "tur":
+          message = 'NEED TO TRANSLATE'
+          break;
+        case "ita":
+          message = "Qualcosa è andato storto durante l'aggiornamento. Per favore arrabbiati con Filippo"
+        default:
+          message = 'Something went wrong while updating details. Please get angry with Fil'
+          console.log("Could find language", lan)
+      }
+      alert(message);
     } finally {
       // Hide loading spinner
       $("#loading-spinner").hide();
