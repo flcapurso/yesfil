@@ -26,6 +26,13 @@
   src: url('fonts/PoiretOne-Regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Square Peg';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/SquarePeg-Regular.ttf') format('truetype');
+}
+
 h1, h2, h3, h4, p, label, input, button, li, textarea, select, summary, table * {
   font-family: "Megrim", "Poiret One", sans-serif;
   font-weight: 400;
@@ -195,7 +202,7 @@ main {
 }
 
 main.right {
-  margin-left: 40% !important;
+  margin-left: 45% !important;
   transition: all .8s ease-out;
 }
 
@@ -317,10 +324,60 @@ details summary::after {
   right: 0%;
 }
 
+#cover-title {
+  color: white;
+  font-style: bold;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  font-family: 'Megrim';
+  font-size: 4rem;
+  text-align: center;
+}
+
+#cover-svg {
+  position: absolute;
+  bottom: 10%;
+  left:50%;
+  transform: translate(-50%);
+  z-index: 10;
+  animation-name: sliding;
+  animation-iteration-count: infinite;
+  animation-duration: 1.2s;
+  animation-timing-function: linear;
+}
+
+@keyframes sliding {
+  0% {
+    bottom: 20%;
+    opacity:0;
+  }
+  40% {
+    bottom: 12%;
+    opacity:1;
+  }
+  60% {
+    bottom: 8%;
+    opacity:1;
+  }
+  100% {
+    bottom: 0%;
+    opacity: 0;
+  }
+}
+
 
 @media screen and (orientation:portrait) {
   #cover-container img:nth-of-type(1) {
     display: none;
+  }
+  #cover-container img:nth-of-type(2) {
+    width:100%;
+    height:auto;
+    top:50%;
+    transform: translate(-50%,-50%);
   }
   #cover-container img:nth-of-type(3) {
     display: none;

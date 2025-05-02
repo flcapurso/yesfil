@@ -40,16 +40,22 @@
   <!-- Navigation Menu -->
   <div class="menu" style="display: none">
     <div class="menu-item selected orange" data-target="#rsvp" data-text="RSVP"></div>
-    <div class="menu-item orange" data-target="#weddingDay" data-text="Wedding Day"></div>
-    <div class="menu-item orange" data-target="#info" data-text="Additional Info"></div>
+    <div class="menu-item orange eng" data-target="#weddingDay" data-text="Wedding Day"></div>
+    <div class="menu-item orange tur" data-target="#weddingDay" data-text="Düğün Günü"></div>
+    <div class="menu-item orange ita" data-target="#weddingDay" data-text="Giorno del Matrimonio"></div>
+    <div class="menu-item orange eng" data-target="#info" data-text="Additional Info"></div>
+    <div class="menu-item orange tur" data-target="#info" data-text="Ekstra Bilgi"></div>
+    <div class="menu-item orange ita" data-target="#info" data-text="Info aggiuntive"></div>
   </div>
   
   <!-- Cover Image -->
   <div id="cover-container">
     <div style="position: absolute; height: 100%; width: 100%; background: black;">
-      <img id="cover1" src="images/covers/1.jpeg">
-      <img id="cover2" src="images/covers/2.jpeg">
-      <img id="cover3" src="images/covers/3.jpeg">
+      <img id="cover1">
+      <img id="cover2">
+      <img id="cover3">
+      <svg id="cover-svg" xmlns="http://www.w3.org/2000/svg" height="80" width="70" viewBox="0 0 448 512"><path fill="#ffffff" d="M246.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L224 402.7 361.4 265.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-160 160zm160-352l-160 160c-12.5 12.5-32.8 12.5-45.3 0l-160-160c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L224 210.7 361.4 73.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3z"/></svg>
+     <!--  <h1 id="cover-title">YeşFil's Wedding</h1> -->
     </div>
   </div>
 
@@ -153,7 +159,7 @@
 
               <div id="checkbox-container">
                 <label class="eng" for="play">In case Fil has time to plan a small game for the event, would you like to join?</label>
-                <label class="tur" for="play">Need to translate</label>
+                <label class="tur" for="play">Eğer Filippo küçük bir oyun düzenlerse katılmak ister misini? (biraz zor olabilir)</label>
                 <label class="ita" for="play">Nel caso Filippo abbia tempo di pianificare un gioco per l'evento, vorresti partecipare?</label>
                 <input type="checkbox" id="play" name="play">
               </div>

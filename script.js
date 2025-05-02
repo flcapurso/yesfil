@@ -1,3 +1,8 @@
+for (var i = 1; i <= 3; i++) {
+let imageInt = Math.floor((Math.random() * 5) + 1);
+      $(`#cover${i}`).attr('src', `images/covers/${imageInt}.jpeg`)
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const keyInputSection = document.getElementById('key-input-section');
   const mainContainer = document.getElementById('main-container');
@@ -413,7 +418,7 @@ document.addEventListener('DOMContentLoaded', () => {
             message = `Details updated for ${data.fields.Name}!`
             break;
           case "tur":
-            message = `NEED TO TRANSLATE - ${data.fields.Name}`
+            message = `Değişiklikler ${data.fields.Name} için kaydedildi`
             break;
           case "ita":
             message = `Dettagli aggiornati per ${data.fields.Name}!`
@@ -432,7 +437,7 @@ document.addEventListener('DOMContentLoaded', () => {
           message = 'Something went wrong while updating details. Please get angry with Fil'
           break;
         case "tur":
-          message = 'NEED TO TRANSLATE'
+          message = "Değişiklikleri kaydederken bir sorun oluştu. Fil'i sorumlu tutabilirsiniz"
           break;
         case "ita":
           message = "Qualcosa è andato storto durante l'aggiornamento. Per favore arrabbiati con Filippo"
