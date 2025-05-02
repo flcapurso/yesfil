@@ -11,7 +11,7 @@ $(document).ready(function() {
   console.log(secret)
 
   if (names) {
-    $('#names').text('Dear ' + names)
+    $('#names').text(names)
     $('#secret').text(secret)
   }
 
