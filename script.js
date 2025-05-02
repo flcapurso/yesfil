@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   var imageList = []
   var lastImage = new Image()
-  for (var i = 1; i <= 12; i++) {
+  for (var i = 1; i <= 13; i++) {
     var img = new Image()
     imageList.push(img)
     img.src = `images/loading/${i}.jpg`
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if ((Date.now() - lastLoadChange) > 2000) {
       lastLoadChange = Date.now()
       $("#loading-image").hide()
-      let imageInt = Math.floor((Math.random() * 12) + 1);
+      let imageInt = Math.floor((Math.random() * 13) + 1);
       $("#loading-image").attr('src', `images/loading/${imageInt}.jpg`).on('load', function() {
         $("#loading-image").show()
       });
