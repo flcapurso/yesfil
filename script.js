@@ -1,6 +1,9 @@
-for (var i = 1; i <= 3; i++) {
-let imageInt = Math.floor((Math.random() * 5) + 1);
-      $(`#cover${i}`).attr('src', `images/covers/${imageInt}.jpeg`)
+let coverImageArray = [1,2,3,4,5]
+for (var i = 0; i < 3; i++) {
+  let imageInt = Math.floor((Math.random() * (5-i)));
+  $(`#cover${i+1}`).attr('src', `images/covers/${coverImageArray[imageInt]}.jpeg`)
+  // console.log(imageInt, coverImageArray[imageInt], coverImageArray)
+  coverImageArray.splice(imageInt, 1)
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -304,6 +307,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const isValidKey = await fetchAccessCodes(key);
       if (isValidKey) {
         keyInputSection.classList.add("hidden");
+        $(".menu").toggleClass("expanded")
+        $("main").toggleClass("right")
         $("#cover-container").hide();
         mainContainer.classList.remove("hidden");
         await updateUserList();
@@ -311,6 +316,8 @@ document.addEventListener('DOMContentLoaded', () => {
         $(".menu").show();
         $(":root").css("--font-color", $(":root").css("--orange",))
         $(":root").css("--bg_image", $(":root").css("--orange_bg",))
+        $(".menu").toggleClass("expanded")
+        $("main").toggleClass("right")
       } else {
         errorMessage.textContent = "Incorrect / Yanlış / Errata";
         errorMessage.classList.remove("hidden");
@@ -343,10 +350,10 @@ document.addEventListener('DOMContentLoaded', () => {
       $(":root").css("--font-color", $(":root").css("--blue",))
       $(":root").css("--bg_image", $(":root").css("--blue_bg",))
     }
-
     $(".menu").removeClass("expanded")
     $("main").removeClass("right")
     $(".content-section.active").removeClass("active")
+    $("html, body").scrollTop(0)
     $(target).addClass("active")
   })
 
