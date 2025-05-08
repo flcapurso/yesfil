@@ -17,9 +17,13 @@ $(document).ready(function() {
     }
     else if (names.slice(-1) == "a") {
       names = "Cara " + names
+      $(".plur").hide();
+      $(".sing").show();
     }
     else {
       names = "Caro " + names
+      $(".plur").hide();
+      $(".sing").show();
     }
   }
 
