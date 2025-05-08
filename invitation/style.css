@@ -73,7 +73,7 @@ body::before {
 }
 
 #euc1 {
-  display: none;
+/*  display: none;*/
   position: absolute;
   bottom: 0;
   right: 0;
@@ -84,7 +84,7 @@ body::before {
   pointer-events: none;
 }
 #euc2 {
-  display: none;
+/*  display: none;*/
   position: absolute;
   top: 0;
   left: 0;
@@ -97,7 +97,7 @@ body::before {
 
 h1, h2, h3, h4, p {
   color: black;
-  font-family: "Megrim", cursive;
+  font-family: "Poiret One", sans-serif;
   font-weight: 400;
   font-style: normal;
   padding:0px;
@@ -108,9 +108,9 @@ h1, h2, h3, h4, p {
 #initials {
   position: absolute;
   top: -20vmin;
-  left: -5.7vmin;
+  left: -5.3vmin;
   z-index: 4;
-  font: 6rem "Megrim", cursive;
+  font: 6rem "Poiret One", sans-serif;
   color: #413527;
 }
 
@@ -133,6 +133,10 @@ h4 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.content .sing {
+  display: none;
 }
 
 #wrapper {
