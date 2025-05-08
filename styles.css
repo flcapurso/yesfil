@@ -34,7 +34,7 @@
 }
 
 h1, h2, h3, h4, p, label, input, button, li, textarea, select, summary, table * {
-  font-family: "Megrim", "Poiret One", sans-serif;
+  font-family: "Poiret One", sans-serif;
   font-weight: 400;
   font-style: normal;
   color: var(--font-color);
@@ -52,6 +52,9 @@ h3 {
 }
 h4 {
   margin-bottom: 5px;
+}
+p, label, input, select, textarea, button, summary {
+  font-size: 1.2rem;
 }
 
 input {
@@ -277,7 +280,7 @@ button.active {
   left: 0px;
   top: 50%;
   transform: translateY(-50%);
-  font-family: "Megrim", "Poiret One", sans-serif;
+  font-family: "Poiret One", sans-serif;
   font-size: 2rem;
   padding: 5px 0px;
   /* white-space: nowrap; */
@@ -347,7 +350,7 @@ details summary::after {
   left:50%;
   transform: translate(-50%, -50%);
   z-index: 10;
-  font-family: 'Megrim';
+  font-family: 'Poiret One';
   font-size: 4rem;
   text-align: center;
 }
