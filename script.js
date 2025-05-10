@@ -316,8 +316,10 @@ document.addEventListener('DOMContentLoaded', () => {
         $(".menu").show();
         $(":root").css("--font-color", $(":root").css("--orange",))
         $(":root").css("--bg_image", $(":root").css("--orange_bg",))
-        $(".menu").toggleClass("expanded")
-        $("main").toggleClass("right")
+        setTimeout(function() {
+          $(".menu").toggleClass("expanded")
+          $("main").toggleClass("right")
+        }, 1250)
       } else {
         errorMessage.textContent = "Incorrect / Yanlış / Errata";
         errorMessage.classList.remove("hidden");
