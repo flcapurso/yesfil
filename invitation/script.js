@@ -5,8 +5,8 @@ $(document).ready(function() {
   });
 
   let searchParams = new URLSearchParams(window.location.search)
-  let names = searchParams.get('names')
-  let secret = searchParams.get('secret')
+  let names = searchParams.get('names') || ""
+  let secret = searchParams.get('secret') || ""
   const lang = location.href.split("/").slice(-1)[0].split(".")[0]
   console.log(names)
   console.log(secret)
